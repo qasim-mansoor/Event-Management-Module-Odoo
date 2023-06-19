@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Define the main menu item for CMS -->
+    <menuitem id="main_menu_env" name="Event Management" sequence="10"/>
+
+    <!-- Menu items for CMS Departments -->
+    <menuitem id="menu_env_event_main" name="Events" parent="main_menu_env" sequence="1"/>
+    <menuitem id="menu_env_event_" name="Create An Event" parent="menu_env_event_main" action="action_env_event" sequence="21"/>
+
+    <menuitem id="menu_env_organiser" name="Organisers" parent="main_menu_env" sequence="2" />
+    <menuitem id="menu_env_organiser_list" name="Register an Organiser" parent="menu_env_organiser" action="action_env_organiser"/>
+
+    <menuitem id="menu_env_participant" name="Participants" parent="main_menu_env" sequence="3"/>
+    <menuitem id="menu_env_participant_list" name="Register a Participant" parent="menu_env_participant" action="action_env_participant"/>
+
+    <menuitem id="menu_env_team" name="Teams" parent="main_menu_env" sequence="4"/>
+    <menuitem id="menu_env_team_" name="Create A Team" parent="menu_env_team" action="action_nu_team" sequence="21"/>
+
+    <menuitem id="menu_env_sponsors" name="Sponsors" parent="main_menu_env" sequence="5"/>
+    <menuitem id="menu_env_sponsors_" name="Create Sponsors" parent="menu_env_sponsors" action="action_env_sponsors" sequence="21"/>
+
+    <menuitem id="menu_env_revenue" name="Accounting" parent="main_menu_env" sequence="6"/>
+    <menuitem id="menu_env_revenue_" name="CashFlows" parent="menu_env_revenue" action="action_env_event_revenue" sequence="21"/>
+</odoo>

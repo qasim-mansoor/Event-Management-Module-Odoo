@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="pending" model="participant.state">
+        <field name="name">Pending</field>
+        <field name="sequence">1</field>
+        <field name="participant_state">pending</field>
+    </record>
+    <record id="paid" model="participant.state">
+        <field name="name">Paid</field>
+        <field name="sequence">5</field>
+        <field name="participant_state">paid</field>
+    </record>
+    <record id="cancelled" model="participant.state">
+        <field name="name">Cancelled</field>
+        <field name="sequence">15</field>
+        <field name="participant_state">cancelled</field>
+    </record>
+</odoo>

@@ -1,0 +1,318 @@
+<odoo>
+
+    <!-- CMS Department -->
+
+    <!--                Define the form view -->
+    <record id="view_env_event_form" model="ir.ui.view">
+        <field name="name">Event Form</field>
+        <field name="model">env.event</field>
+        <field name="arch" type="xml">
+            <form string="Event">
+                <!-- <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field':'fold'}"/>
+                </header> -->
+                <group>
+                    <field name="event_name"/>
+                    <field name="event_location"/>
+                    <field name="event_description"/>
+                    <field name="start_date"/>
+                    <field name="event_cost"/>
+                    <field name="currency_id"/>
+                </group>
+                <notebook>
+                    <page string="Events">
+                        <field name="child_ids" mode="tree">
+                            <tree>
+                                <field name="event_name"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <!-- Define the tree view -->
+    <record id="view_env_event_tree" model="ir.ui.view">
+        <field name="name">Event Tree</field>
+        <field name="model">env.event</field>
+        <field name="arch" type="xml">
+            <tree string="Events">
+                <field name="event_name"/>
+                <field name="child_ids" mode="tree" widget="many2many_tags">
+                    <tree string="Events" editable="bottom">
+                        <field name="event_name"/>
+                        <field name="event_location"/>
+                        <field name="event_description"/>
+                        <field name="start_date"/>
+                        <field name="event_cost"/>
+                        <field name="currency_id"/>
+                        <!-- <field name="stage_id"/> -->
+                    </tree>
+                </field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_env_event" model="ir.actions.act_window">
+        <field name="name">Events</field>
+        <field name="res_model">env.event</field>
+        <field name="res_model">env.event</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_no content_smiling_face">
+                You can add Events here.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_env_organiser_form" model="ir.ui.view">
+        <field name="name">env.organiser.form</field>
+        <field name="model">env.organiser</field>
+        <field name="arch" type="xml">
+            <form string="Program Information">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone_number"/>
+                        <field name="event_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--         Tree View -->
+
+    <record id="view_env_organiser_tree" model="ir.ui.view">
+        <field name="name">env.organiser.tree</field>
+        <field name="model">env.organiser</field>
+        <field name="arch" type="xml">
+            <tree string="Organisers">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone_number"/>
+                <field name="event_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_env_organiser" model="ir.actions.act_window">
+        <field name="name">Organisers</field>
+        <field name="res_model">env.organiser</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_no content_smiling_face">
+                You can add Organisers here!
+            </p>
+            </field>
+    </record>
+
+    <record id="view_env_participant_form" model="ir.ui.view">
+        <field name="name">env.participant.form</field>
+        <field name="model">env.participant</field>
+        <field name="arch" type="xml">
+            <form string="Participant Information">
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field':'fold'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="nic"/>
+                        <field name="team_ids" widget="many2many_tags"/>
+                        <field name="stage_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--         Tree View -->
+
+    <record id="view_env_participant_tree" model="ir.ui.view">
+        <field name="name">env.participant.tree</field>
+        <field name="model">env.participant</field>
+        <field name="arch" type="xml">
+            <tree string="Participants">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="nic"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_env_participant" model="ir.actions.act_window">
+        <field name="name">Participants</field>
+        <field name="res_model">env.participant</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_no content_smiling_face">
+                You can add Participants here!
+            </p>
+            </field>
+    </record>
+
+
+    <!-- Form View Of team -->
+<record id="view_env_team_form" model="ir.ui.view">
+        <field name="name">Team Form</field>
+        <field name="model">env.team</field>
+        <field name="arch" type="xml">
+             <form string="Event Team">
+                <sheet>
+                    <group>
+                <field name="team_name"/>
+            </group>
+            <group>
+                <field name="team_leader"/>
+            </group>
+            <group>
+                <field name="participant_ids" widget="many2many_tags"/>
+            </group>
+            <group>
+                <field name="team_id"/>
+            </group>
+				</sheet>
+			</form>
+		</field>
+    </record>
+
+
+
+     <record id="view_env_team_tree" model="ir.ui.view">
+        <field name="name">ENV Team Tree</field>
+        <field name="model">env.team</field>
+        <field name="arch" type="xml">
+            <tree string="Event Team">
+                <field name="team_name"/>
+                <field name="team_leader"/>
+                <field name="participant_ids" widget="many2many_tags"/>
+                <field name="team_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_nu_team" model="ir.actions.act_window">
+        <field name="name">Team</field>
+        <field name="res_model">env.team</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_no content_smiling_face">
+                You can add Teams here!
+            </p>
+            </field>
+    </record>
+
+     <record id="view_env_sponsor_form" model="ir.ui.view">
+        <field name="name">Sponsor Form</field>
+        <field name="model">env.sponsors</field>
+        <field name="arch" type="xml">
+            <form string="Sponsors">
+                <group>
+                    <field name="Sponsor_name"/>
+                    <field name="sponsor_aid"/>
+                    <field name="currency_id"/>
+                    <field name="event_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <!-- Define the tree view -->
+    <record id="view_env_sponsor_tree" model="ir.ui.view">
+        <field name="name">Sponsor Tree</field>
+        <field name="model">env.sponsors</field>
+        <field name="arch" type="xml">
+            <tree string="Sponsors">
+                <field name="Sponsor_name"/>
+                <field name="sponsor_aid"/>
+                <field name="currency_id"/>
+                <field name="event_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_env_sponsors" model="ir.actions.act_window">
+        <field name="name">Sponsors</field>
+        <field name="res_model">env.sponsors</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_no content_smiling_face">
+                You can add Sponsors here.
+            </p>
+        </field>
+    </record>
+
+<!--    Revenue -->
+    <record id="view_env_event_revenue_form" model="ir.ui.view">
+        <field name="name">Cashflow Form</field>
+        <field name="model">env.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="event_id"/>
+                        <field name="type"/>
+                        <field name="amount_paid"/>
+                        <field name="currency_id"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_env_event_revenue_tree" model="ir.ui.view">
+        <field name="name">Cashflow Tree</field>
+        <field name="model">env.account</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="event_id"/>
+                <field name="type"/>
+                <field name="amount_paid"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_env_account_search">
+        <field name="name">env.account.search</field>
+        <field name="model">env.account</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+<!--                    <filter string="Event" name="group_by_event" context="{'group_by': 'event_id'}"/>-->
+                    <filter string="Event and Account Type" name="group_by_event_type" context="{'group_by': 'computed_group'}"/>
+                </group>
+                <group expand="0" string="Aggregations">
+                    <filter string="Total Amount Paid" name="amount_paid_sum" context="{'aggregates': [('amount_paid', 'sum')]}"/>
+                </group>
+                <field name="event_id"/>
+                <field name="type"/>
+                <field name="amount_paid"/>
+                <field name="computed_group" invisible="1"/>
+            </search>
+        </field>
+    </record>
+
+
+
+    <record id="action_env_event_revenue" model="ir.actions.act_window">
+        <field name="name">Event Accounts</field>
+        <field name="res_model">env.account</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_env_account_search" />
+    </record>
+
+</odoo>
